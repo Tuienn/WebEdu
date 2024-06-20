@@ -128,4 +128,56 @@ for(let i=0; i<3; i++){
 //         groupInput[index].querySelector('.input_text').style.border = 'solid 1px black';
 //     });
 // });
- 
+
+//Fake route
+// Get references to the navBar options and main div
+// const option1 = document.getElementById('option1');
+// const option2 = document.querySelector('.container_main_second');
+const mainDiv_first = document.querySelector('.container_main_first');
+const mainDiv_second = document.querySelector('.container_main_second');
+
+// Get references to the navBar options and main div
+// const option1 = document.getElementById('option1');
+// const option2 = document.getElementById('option2');
+// const mainDiv = document.getElementById('main');
+
+// Function to load content from an external file
+function loadContent(file, scriptFile) {
+    fetch(file)
+        .then(response => response.text())
+        .then(data => {
+            mainDiv_second.innerHTML = data;
+            if (scriptFile) {
+                loadScript(scriptFile);
+            }
+        })
+        .catch(error => {
+            mainDiv_second.innerHTML = '<p>Error loading content.</p>';
+            console.error('Error:', error);
+        });
+}
+
+// Function to load and execute an external script file
+function loadScript(scriptFile) {
+    const script = document.createElement('script');
+    script.src = scriptFile;
+    script.onload = function() {
+        console.log(`${scriptFile} loaded successfully.`);
+    };
+    document.body.appendChild(script);
+}
+
+// Add event listeners to navBar options
+document.getElementById('subnav_li_logout').addEventListener('click', function(event) {
+    event.preventDefault();
+    loadContent('/Users/vendors/calendar/calendar.html', '/Users/vendors/calendar/calendar.js');
+});
+
+// option2.addEventListener('click', function(event) {
+//     event.preventDefault();
+//     loadContent('option2.html', null); // No script for option 2 in this example
+// });
+
+
+
+

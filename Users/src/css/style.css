@@ -291,6 +291,8 @@
 
 .input_text_gender{
     width: 50%;
+    display: flex;
+    overflow: hidden;
 }
 
 .infor_container_confirm {
