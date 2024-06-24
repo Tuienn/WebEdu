@@ -25,18 +25,18 @@ function renderCalendar() {
 
     // Vòng for chạy từ thứ cuối cùng của tháng trở lại(set cho các con số mờ)
     for (let i = firstDayofMonth; i > 0; i--) { // creating li of previous month last days
-        liTag += `<li class="inactive">${lastDateofLastMonth - i + 1}</li>`;
+        liTag += `<li class="day day_inactive" title= "${lastDateofLastMonth - i + 1} - ${currMonth} - ${currYear}">${lastDateofLastMonth - i + 1}</li>`;
     }
     // Vòng lặp for set cho các thứ trong tháng hiện tại
     for (let i = 1; i <= lastDateofMonth; i++) { // creating li of all days of current month
         // Ngày hiện tại thì có classNam là active, còn không className là day
         let isToday = (i === date.getDate() && currMonth === new Date().getMonth() 
-                     && currYear === new Date().getFullYear()) ? "active" : "day";
-        liTag += `<li class="${isToday}">${i}</li>`;
+                     && currYear === new Date().getFullYear()) ? "day day_now" : "day day_active";
+        liTag += `<li class="${isToday}" title="${i} - ${currMonth+1} - ${currYear}">${i}</li>`;
     }
     // Vòng for chạy từ thứ cuối cùng của tháng hiện tại đển thứ của tháng tiếp
     for (let i = lastDayofMonth; i < 6; i++) { // creating li of next month first days
-        liTag += `<li class="inactive">${i - lastDayofMonth + 1}</li>`
+        liTag += `<li class="day day_inactive" title= "${i - lastDayofMonth + 1} - ${currMonth+2} - ${currYear}">${i - lastDayofMonth + 1}</li>`
     }
     currentDate.innerText = `${months[currMonth]} - ${currYear}`; // passing current mon and yr as currentDate text
     daysTag.innerHTML = liTag;
@@ -59,3 +59,21 @@ prevNextIcon.forEach(icon => { // getting prev and next icons
         renderCalendar(); // calling renderCalendar function
     });
 });
+
+
+// Sự kiện chọn ngày
+let group_day_selected = document.querySelectorAll('.day');
+
+var day_selected = document.querySelector('.calendar_day_selected_title');
+var day_work = document.querySelector('.calendar_day_selected_work');
+
+function selectDay(calendar_day_selected){
+    day_selected.innerText = calendar_day_selected.title;
+}
+
+for(let i=0; i<group_day_selected.length; i++){
+    group_day_selected[i].addEventListener("click", function(){
+        selectDay(group_day_selected[i]);
+    });
+}
+

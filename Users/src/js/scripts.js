@@ -92,6 +92,7 @@ var input_text = document.querySelectorAll('.infor_container_content .input_text
 
 // C2(chạy được): Tự nghĩ theo c1 nhưng đổi let thành var(var là sai)
 // Link giải thích: https://chatgpt.com/c/ed4a92c7-7b62-4f09-b4ef-85e4c7b326fb
+// Khi click vào ô input thì ô đó sẽ về trạng thái bình thường(có tác dụng khi ô đó đang có hiện lỗi và sau đó nhập dữ liệu)
 
 var groupInput = document.querySelectorAll('.infor_container_content .group_input');
 
@@ -102,7 +103,7 @@ for(let i=0; i<3; i++){
         groupInput[i].querySelector('.input_text').setAttribute('style', 'border: solid 1px black');
     });
 }
-
+// Nếu click nhập rồi thì phải nhâp, không thì báo lỗi
 for(let i=0; i<3; i++){
     input_text[i].addEventListener("blur", function(){
         if(checkTextIsNull(input_text[i])){
@@ -118,10 +119,11 @@ for(let i=0; i<3; i++){
                 groupInput[i].querySelector('.input_text_error').innerText = '(*)Vui lòng nhập địa chỉ';
             }
         }
-    })
-    
+    })  
 }
 // C3: CLean code theo chatGPT
+// Khi click vào ô input thì ô đó sẽ về trạng thái bình thường(có tác dụng khi ô đó đang có hiện lỗi và sau đó nhập dữ liệu)
+
 // modal_input_text.forEach((input, index) => {
 //     input.addEventListener("input", function() {
 //         groupInput[index].querySelector('.input_text_error').innerText = '';
@@ -134,7 +136,7 @@ for(let i=0; i<3; i++){
 // const option1 = document.getElementById('option1');
 // const option2 = document.querySelector('.container_main_second');
 const mainDiv_first = document.querySelector('.container_main_first');
-const mainDiv_second = document.querySelector('.container_main_second');
+const mainDiv_second = document.querySelector('.calendar');
 
 // Get references to the navBar options and main div
 // const option1 = document.getElementById('option1');

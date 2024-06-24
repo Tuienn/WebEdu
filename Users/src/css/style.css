@@ -187,7 +187,7 @@
 .modal_body {
     /* Cấu trúc */
     background-color: var(--white-color);
-    border-radius: 20px;
+    border-radius: var(--border-radius-big);
     padding: 30px;
 
     /* Vị trí */
@@ -232,7 +232,7 @@
     width: calc(100% - 45% - 40px);
     /* width infor_form - with container - margin-left */
     background-color: var(--button-hover-color);
-    border-radius: 20px;
+    border-radius: var(--border-radius-big);
     
     /* Vị trí */
     margin-left: 40px;
@@ -266,7 +266,7 @@
 /* Title information */
 .infor_container_title{
     display: flex;
-    margin-bottom: 20px;
+    margin-bottom: var(--border-radius-big);
 }
 .infor_container_title>h1{
     font-weight: 700;
@@ -330,7 +330,7 @@
     width: 42%;
     height: 100%;
     position: absolute;
-    border-radius: 20px;
+    border-radius: var(--border-radius-big);
 }
 
 .container_main_second{
@@ -341,5 +341,81 @@
     top: 0;
     right: 0;
     position: absolute;
-    border-radius: 20px;
+    display: flex;
+    border-radius: var(--border-radius-big);
 }
+
+.calendar_title {
+    border-top-right-radius: var(--border-radius-big);
+    border-bottom-right-radius: var(--border-radius-big);
+    background-color: var(--nav-hover-color);
+    width: 20%;
+}
+
+.calendar_title>div{
+    width: 100%;
+    height: calc(100%/8);
+
+    font-size: 3rem;
+    font-weight:600;
+
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+}
+.calender_main{
+    width: 80%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.calendar{
+    margin: auto;
+    border-top-left-radius: var(--border-radius-big);
+    height: 75%;
+
+}
+
+.calendar_work{
+    
+    display: flex;
+    justify-content: center;
+    height: 25%;
+    border-bottom-left-radius: var(--border-radius-big);
+}
+
+.calendar_day{
+    position: relative;
+    background-color: #e9e7e7;
+    
+    height: 80%;
+    width: 80%;
+    font-size: 1.3rem;
+
+    border-radius: 10px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+}
+.calendar_day:first-child{
+    font-style: italic;
+    font-size: 1.5rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calendar_day:last-child{
+    display: flex;
+}
+
+.calendar_day_selected_title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 30%;
+    border-right: solid 2px;
+}
+
+
