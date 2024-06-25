@@ -13,7 +13,6 @@ function close_inforModal(){
 btn_modal_close.addEventListener("click", close_inforModal);
 // Đóng giao diện thông tin cá nhân
 
-
 // Xử lý bên trong modal
 
 // 1. Xử lý khi không nhập họ tên và địa chỉ
@@ -121,6 +120,17 @@ for(let i=0; i<3; i++){
         }
     })  
 }
+
+//Mở giao diện thời khóa biểu
+var group_nav_subnav_liSelect = document.querySelectorAll('.nav_subnav_liSelect');
+for(let i=0; i<2; i++){
+    group_nav_subnav_liSelect[i].addEventListener("click", function(){
+        document.querySelector('.container_main_third').setAttribute('style', 'display: none');
+        document.querySelector('.container_main_first').setAttribute('style', 'display: flex');
+        document.querySelector('.container_main_second').setAttribute('style', 'display: flex');
+    });
+}
+
 // C3: CLean code theo chatGPT
 // Khi click vào ô input thì ô đó sẽ về trạng thái bình thường(có tác dụng khi ô đó đang có hiện lỗi và sau đó nhập dữ liệu)
 
@@ -168,18 +178,67 @@ function loadScript(scriptFile) {
     };
     document.body.appendChild(script);
 }
+loadContent('/Users/vendors/calendar/calendar.html', '/Users/vendors/calendar/calendar.js');    
 
 // Add event listeners to navBar options
-document.getElementById('subnav_li_logout').addEventListener('click', function(event) {
-    event.preventDefault();
-    loadContent('/Users/vendors/calendar/calendar.html', '/Users/vendors/calendar/calendar.js');
-});
+// document.getElementById('subnav_li_logout').addEventListener('click', function(event) {
+//     event.preventDefault();
+//     loadContent('/Users/vendors/calendar/calendar.html', '/Users/vendors/calendar/calendar.js');
+// });
 
 // option2.addEventListener('click', function(event) {
 //     event.preventDefault();
 //     loadContent('option2.html', null); // No script for option 2 in this example
 // });
 
+//Xử lý API
+// var calendarAPI = "http://localhost:3000/calendar/HS1";
 
+// function start(){
+//     getCalendarData(renderCalendar);
+// }
+
+// start();
+
+// function getCalendarData(callback){
+//     fetch(calendarAPI)
+//         .then(function(response){
+//             return response.json();
+//         })
+//         .then(callback)
+//         .catch(function(error){
+//             console.log(error);
+//         });
+        
+// }
+
+// function renderCalendar(dates){
+//     var listDate = document.querySelector('.test_API');
+
+//     var htmls = dates.listDate.map(function(date){
+//         return `
+//         <li>
+//             <h4>${date.date}</h4>
+//             <p>${date.shift}</p>
+//             <p>${date.status}</p>
+//         </li>`;
+//     });  
+//     var html = htmls.join('');
+//     listDate.innerHTML = html;
+// }
+
+// function renderCourses(courses){
+//     var listCourses = document.querySelector('.test_API');
+//     console.log(listCourses);
+//     var htmls = courses.map(function(course){
+//         return `
+//         <li>
+//             <h4>${course.id}</h4>
+//             <p>${course.name}</p>
+//         </li>`;
+//     });  
+//     var html = htmls.join('');
+//     listCourses.innerHTML = html;
+// }
 
 

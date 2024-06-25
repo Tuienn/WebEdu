@@ -60,7 +60,7 @@ header .current-date{
   cursor: default;
 }
 .calendar .days li.day{
-  z-index: 1;
+  z-index: 0;
   cursor: pointer;
   position: relative;
   margin-top: 30px;

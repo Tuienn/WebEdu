@@ -7,6 +7,7 @@ let date = new Date(),
 currYear = date.getFullYear(),
 currMonth = date.getMonth();
 
+
 // storing full name of all months in array
 const months = ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7",
               "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"];
@@ -40,11 +41,15 @@ function renderCalendar() {
     }
     currentDate.innerText = `${months[currMonth]} - ${currYear}`; // passing current mon and yr as currentDate text
     daysTag.innerHTML = liTag;
+
+    handleEventSelectDay();
 }
+
 renderCalendar();
 
 prevNextIcon.forEach(icon => { // getting prev and next icons
-    icon.addEventListener("click", () => { // adding click event on both icons
+    icon.addEventListener("click", () => {
+         // adding click event on both icons
         // if clicked icon is previous icon then decrement current month by 1 else increment it by 1
         currMonth = icon.id === "prev" ? currMonth - 1 : currMonth + 1;
 
@@ -62,18 +67,56 @@ prevNextIcon.forEach(icon => { // getting prev and next icons
 
 
 // Sự kiện chọn ngày
-let group_day_selected = document.querySelectorAll('.day');
+function handleEventSelectDay(){
+    var group_day_selected = document.querySelectorAll('.day');
 
-var day_selected = document.querySelector('.calendar_day_selected_title');
-var day_work = document.querySelector('.calendar_day_selected_work');
-
-function selectDay(calendar_day_selected){
-    day_selected.innerText = calendar_day_selected.title;
+    var day_selected = document.querySelector('.calendar_day_selected_title');
+    var day_work = document.querySelector('.calendar_day_selected_work');
+    
+    function selectDay(calendar_day_selected){
+        day_selected.innerText = calendar_day_selected.title;
+    }
+    
+    for(let i=0; i<group_day_selected.length; i++){
+        group_day_selected[i].addEventListener("click", function(){
+            selectDay(group_day_selected[i]);
+        });
+    }
 }
 
-for(let i=0; i<group_day_selected.length; i++){
-    group_day_selected[i].addEventListener("click", function(){
-        selectDay(group_day_selected[i]);
-    });
-}
+
+// //Xử lý API
+// var calendarAPI = "http://localhost:3000/calendar/HS1";
+
+// function start(){
+//     getCalendarData(renderCalendar);
+// }
+
+// start();
+
+// function getCalendarData(callback){
+//     fetch(calendarAPI)
+//         .then(function(response){
+//             return response.json();
+//         })
+//         .then(callback)
+//         .catch(function(error){
+//             console.log(error);
+//         });
+// }
+
+// function renderCalendar(dates){
+//     var listDate = document.querySelector('.test_API');
+
+//     var htmls = dates.map(function(date){
+//         return `
+//         <li>
+//             <h4>${date.date}</h4>
+//             <p>${date.shift}</p>
+//             <p>${date.status}</p>
+//         </li>`;
+//     });  
+//     var html = htmls.join('');
+//     listDate.innerHTML = html;
+// }
 

@@ -145,6 +145,11 @@
     position: fixed;
     /* Tạo phần tử có vị trí cố định */
 
+    z-index: 2;
+     /* set lớn hơn của #nav>li */
+    /* z-index default = 0 */
+    /* Sử dụng để đẩy modal_body lên trên gần mắt người dùng */
+
     /* Vị trí */
     top: 0;
     bottom: 0;
@@ -197,10 +202,6 @@
     /* Đặc tính */
     position: relative;
     /* Không ảnh hưởng kích thước phần tử khác, cũng giúp modal_body nổi lên trên modal_overlay*/
-    z-index: 2;
-    /* set lớn hơn của #nav>li */
-    /* z-index default = 0 */
-    /* Sử dụng để đẩy modal_body lên trên gần mắt người dùng */
 
     /* Hiệu ứng */
     animation: Growth ease-in 0.22s;
@@ -211,6 +212,7 @@
 .infor_form {
     width: 730px;
     display: block;
+    z-index: 3;
 }
 /* Thẻ div chứa nút X */
 .modal_close { 
@@ -326,14 +328,110 @@
 }
 
 .container_main_first{
+    display: none;
+
     background-color: var(--white-color);
     width: 42%;
     height: 100%;
     position: absolute;
     border-radius: var(--border-radius-big);
+
+    /* display: flex; */
+    flex-direction: column;
 }
 
+.container_first_img{
+    width: 100%;
+    height: 50%;
+    display: flex;
+}
+
+.img_class{
+    width: 80%;
+    border-radius: var(--border-radius-big);
+    margin: auto;
+}
+
+.container_first_content{
+    width: 100%;
+    height: 50%;
+
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.container_first_title{
+    top: 30px;
+    position: absolute;
+    background-color: var(--white-color);
+    z-index: 1;
+}
+
+.container_first_title>label{
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.information_class{
+    position: absolute;
+    top: 40px;
+    width: 85%;
+    height: 80%;
+    border-radius: var(--border-radius-big);
+    border: 2px solid var(--border-color);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.group_infor_class{
+    width: 90%;
+    height: 90%;
+}
+
+.group_infor_class>.infor_class{
+    height: calc(100%/4 - 10px);
+    margin-top: 5px;
+    margin-bottom: 10px;
+    /* border: 1px solid var(--border-color); */
+
+    display: flex;
+
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+.group_infor_class>.infor_class>.infor_class_title{
+    width: 50%;
+
+    display: flex;   
+    align-items: center;
+    border-right: 2px solid var(--border-color);
+}
+
+.group_infor_class>.infor_class>.infor_class_content{
+    width: 50%;
+
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
+
+
+
+/* .group_infor_class>.infor_class>div{
+    position: absolute;
+    width: 2px;
+    height: 80%;
+    background-color: var(--black-color);
+    left: 40%;
+} */
+
+
 .container_main_second{
+    display: none;
     background-color: var(--white-color);
     width: 55%;
     height: 100%;
@@ -341,7 +439,7 @@
     top: 0;
     right: 0;
     position: absolute;
-    display: flex;
+    /* display: flex; */
     border-radius: var(--border-radius-big);
 }
 
@@ -417,5 +515,15 @@
     width: 30%;
     border-right: solid 2px;
 }
+
+.container_main_third{
+    background-color: var(--white-color);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: var(--border-radius-big);
+}
+
+
 
 
