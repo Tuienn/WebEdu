@@ -27,6 +27,11 @@ header .icons span{
   font-size: 1.9rem;
   user-select: none;
   border-radius: 50%;
+
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .icons span:last-child{
   margin-right: -10px;

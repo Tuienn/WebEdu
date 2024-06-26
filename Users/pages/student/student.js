@@ -1,3 +1,32 @@
+console.log('student.js executed')
+// function loadContent(mainDiv, file, scriptFile) {
+//     fetch(file)
+//         .then(response => response.text())
+//         .then(data => {
+//             mainDiv.innerHTML = data;
+//             if (scriptFile) {
+//                 loadScript(scriptFile);
+//             }
+//         })
+//         .catch(error => {
+//             mainDiv.innerHTML = '<p>Error loading content.</p>';
+//             console.error('Error:', error);
+//         });
+//         console.log('loadContent calendar executed');
+// }
+
+// // Function to load and execute an external script file
+// function loadScript(scriptFile) {
+//     const script = document.createElement('script');
+//     script.src = scriptFile;
+//     script.onload = function() {
+//         console.log(`${scriptFile} loaded successfully.`);
+//     };
+//     document.body.appendChild(script);
+// }
+
+// const mainDiv = document.querySelector('.calendar');
+// loadContent(mainDiv,'/Users/vendors/calendar/calendar.html', '/Users/vendors/calendar/calendar.js');  
 const daysTag = document.querySelector(".days"),
 currentDate = document.querySelector(".current-date"),
 prevNextIcon = document.querySelectorAll(".icons span");
@@ -127,4 +156,5 @@ function handleEventSelectDay(){
 //     var html = htmls.join('');
 //     listDate.innerHTML = html;
 // }
+
 

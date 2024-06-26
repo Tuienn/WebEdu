@@ -121,13 +121,21 @@ for(let i=0; i<3; i++){
     })  
 }
 
-//Mở giao diện thời khóa biểu
+//Mở giao diện học sinh
+var container_main_func = document.querySelector('.container_main_function');
+
 var group_nav_subnav_liSelect = document.querySelectorAll('.nav_subnav_liSelect');
 for(let i=0; i<2; i++){
     group_nav_subnav_liSelect[i].addEventListener("click", function(){
-        document.querySelector('.container_main_third').setAttribute('style', 'display: none');
-        document.querySelector('.container_main_first').setAttribute('style', 'display: flex');
-        document.querySelector('.container_main_second').setAttribute('style', 'display: flex');
+        // Xóa các thẻ con của container_main_func
+        var child_container_main_func = document.querySelector('.container_main_function>div');
+        if(child_container_main_func!=null){
+            child_container_main_func.remove();
+        }
+
+        container_main_func.setAttribute('style', 'display: flex');
+
+        loadContent(container_main_func, '/Users/pages/student/student.html', '/Users/pages/student/student.js');
     });
 }
 
@@ -141,30 +149,33 @@ for(let i=0; i<2; i++){
 //     });
 // });
 
-//Fake route
-// Get references to the navBar options and main div
-// const option1 = document.getElementById('option1');
-// const option2 = document.querySelector('.container_main_second');
-const mainDiv_first = document.querySelector('.container_main_first');
-const mainDiv_second = document.querySelector('.calendar');
 
-// Get references to the navBar options and main div
-// const option1 = document.getElementById('option1');
-// const option2 = document.getElementById('option2');
-// const mainDiv = document.getElementById('main');
+// //Fake route
+// // Get references to the navBar options and main
 
 // Function to load content from an external file
-function loadContent(file, scriptFile) {
+
+
+function loadContent(mainDiv, file, scriptFile) {
     fetch(file)
         .then(response => response.text())
         .then(data => {
-            mainDiv_second.innerHTML = data;
+            mainDiv.innerHTML = data;
+
+            // Remove existing script if any
+            const existingScript = document.getElementById('dynamic-script');
+            if (existingScript) {
+                console.log('Removing existing script');
+                existingScript.remove();
+            }
+
+            // Load and execute new script if provided
             if (scriptFile) {
-                loadScript(scriptFile);
+                setTimeout(() => loadScript(scriptFile), 0);
             }
         })
         .catch(error => {
-            mainDiv_second.innerHTML = '<p>Error loading content.</p>';
+            mainDiv.innerHTML = '<p>Error loading content.</p>';
             console.error('Error:', error);
         });
 }
@@ -173,23 +184,12 @@ function loadContent(file, scriptFile) {
 function loadScript(scriptFile) {
     const script = document.createElement('script');
     script.src = scriptFile;
+    script.id = 'dynamic-script';
     script.onload = function() {
         console.log(`${scriptFile} loaded successfully.`);
     };
     document.body.appendChild(script);
 }
-loadContent('/Users/vendors/calendar/calendar.html', '/Users/vendors/calendar/calendar.js');    
-
-// Add event listeners to navBar options
-// document.getElementById('subnav_li_logout').addEventListener('click', function(event) {
-//     event.preventDefault();
-//     loadContent('/Users/vendors/calendar/calendar.html', '/Users/vendors/calendar/calendar.js');
-// });
-
-// option2.addEventListener('click', function(event) {
-//     event.preventDefault();
-//     loadContent('option2.html', null); // No script for option 2 in this example
-// });
 
 //Xử lý API
 // var calendarAPI = "http://localhost:3000/calendar/HS1";
@@ -242,3 +242,32 @@ loadContent('/Users/vendors/calendar/calendar.html', '/Users/vendors/calendar/ca
 // }
 
 
+const container = document.getElementById('container_payment');
+const registerBtn = document.getElementById('register');
+const loginBtn = document.getElementById('login');
+
+registerBtn.addEventListener('click', () => {
+    container.classList.add("active");
+});
+
+loginBtn.addEventListener('click', () => {
+    container.classList.remove("active");
+});
+
+// var input_child = document.querySelector('.viewFee-container-content-select-child .input_text');
+// var subnav_viewFee = document.querySelector('.viewFee-container-content-select-child .subnav');
+// input_child.addEventListener("click", function(){
+//     subnav_viewFee.setAttribute('style', 'display: grid');
+// })
+
+function setValueSelectedChild(){
+    var selectedChild = document.querySelectorAll('.viewFee-container-content-select-child .subnav li');
+
+    for(let i=0; i<2; i++){
+        selectedChild[i].addEventListener("click", function(){
+            document.querySelector('.viewFee-container-content-select-child .input_text').value = selectedChild[i].innerText;
+            // document.querySelector('.viewFee-container-content-select-child .subnav').setAttribute('style', 'display: none');
+        });
+    }
+}
+setValueSelectedChild();
