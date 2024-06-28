@@ -39,3 +39,18 @@ var main_modal_information = document.querySelector('.main_modal_information');
 header_logo_user.addEventListener("click", function(){
     loadContent(main_modal_information, '/Users/pages/modalInfor/modal.html', '/Users/pages/modalInfor/modal.js')  
 });
+
+//create event for input type checkbox whent click (change event)
+var group_checkbox = document.querySelectorAll('input[type="checkbox"]');
+
+
+for(let index=0; index<5; index++){
+    group_checkbox[index].addEventListener("change", function() {
+        var parentOfCheckbox = group_checkbox[index].parentElement.parentElement;
+        if(parentOfCheckbox.className != 'active-row')
+            parentOfCheckbox.classList.add('active-row');
+        else
+            parentOfCheckbox.classList.remove('active-row');
+    });
+}
+

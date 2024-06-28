@@ -70,7 +70,7 @@ function loadScript(scriptFile) {
     script.onload = function() {
         console.log(`${scriptFile} loaded successfully.`);
     };
-    document.body.appendChild(script);
+    document.getElementById('saveFullJS').appendChild(script);
 }
 
 //Xử lý API
@@ -91,7 +91,6 @@ function loadScript(scriptFile) {
 //         .catch(function(error){
 //             console.log(error);
 //         });
-        
 // }
 
 // function renderCalendar(dates){

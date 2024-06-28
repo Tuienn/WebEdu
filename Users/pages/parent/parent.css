@@ -41,7 +41,7 @@
     font-size: 1.3rem;
 }
 
-form.sign-in{
+.sign-in{
     left: 0;
     width: 50%;
     z-index: 2;
@@ -51,17 +51,17 @@ form.sign-in{
     transform: translateX(100%);
 }
 
-form.sign-up{
+.sign-up{
     left: 0;
     width: 50%;
-    opacity: 0;
+    opacity: 1;
     z-index: 1;
 }
 
 .container_payment.active .sign-up{
     transform: translateX(100%);
     opacity: 1;
-    z-index: 3;
+    z-index: 5;
     animation: move 0.6s;
 }
 
@@ -72,7 +72,7 @@ form.sign-up{
     }
     50%, 100%{
         opacity: 1;
-        z-index: 3;
+        z-index: 5;
     }
 }
 
@@ -86,7 +86,7 @@ form.sign-up{
     overflow: hidden;
     transition: all 0.6s ease-in-out;
     border-radius: 150px 0 0 100px;
-    z-index: 4;
+    z-index: 9;
 }
 
 .container_payment.active .toggle-container{
@@ -217,14 +217,6 @@ form.sign-up{
     margin-right: 5px;
 }
 
-.viewFee-container-content-select-child{
-    margin-top: 30px;
-    width: 50%;
-
-    position: relative;
-    display: flex;
-}
-
 .payment_content .input_text{
     font-size: 1.3rem;
 }
@@ -235,14 +227,22 @@ form.sign-up{
     top: 30%;
     pointer-events: none;
 }
+.viewFee-container-content-select-child{
+    margin-top: 30px;
+    width: 50%;
+
+    position: relative;
+    display: flex;
+}
 
 .viewFee-container-content-select-child .input_text{
+    cursor: pointer;
     width: 100%;
 }
 
-.viewFee-container-content-select-child:hover .subnav{
+/* .viewFee-container-content-select-child:hover .subnav{
     display: grid;
-}
+} */
 
 .viewFee-container-content-select-child .subnav{
     position: absolute;
@@ -318,9 +318,9 @@ form.sign-up{
     margin-right: 5%;
 }
 
-.group_input_money .input_text{
-    /* width: 40%; */
-    /* margin-bottom: 30px; */
+.input_text_error{
+    display: block;
+    height: 20px;
 }
 
 .total_money{
@@ -347,6 +347,7 @@ form.sign-up{
     padding: 10px;
 
     font-size: 2rem;
+    overflow: hidden;
 }
 
 /* Lựa chọn 2 */
@@ -358,20 +359,21 @@ form.sign-up{
     width: 70%;
 }
 
-.information-pay-selectBank{
-
-}
-
 .information-pay-selectBank img{
     width: 28%;
     border-radius: var(--border-radius-big);
     border: 1px solid var(--black-color);
     margin-left: 10px;
+
+    cursor: pointer;
+}
+.information-pay-selectBank img:first-child{
+    border: 2px solid blue;
 }
 
 .information-pay-selectBank img:hover{
     cursor: pointer;
-    border: 2px solid blue;
+    border: 2px solid;
 }
 
 .information-pay-title{
