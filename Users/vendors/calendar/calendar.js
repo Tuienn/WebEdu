@@ -85,46 +85,11 @@ function handleEventSelectDay(){
                 document.querySelector('.calendar_day:last-child').setAttribute("style", "display: flex");
 
                 flag=true;
-                // Dùng flag để 2 function trên chỉ chạy 1 lần
+                // Dùng flag để 2 function trên chỉ chạy 1 lần(lúc chọn lịch lần đầu)
             }
             selectDay(group_day_selected[i]);
         });
     }
 }
 
-
-// //Xử lý API
-// var calendarAPI = "http://localhost:3000/calendar/HS1";
-
-// function start(){
-//     getCalendarData(renderCalendar);
-// }
-
-// start();
-
-// function getCalendarData(callback){
-//     fetch(calendarAPI)
-//         .then(function(response){
-//             return response.json();
-//         })
-//         .then(callback)
-//         .catch(function(error){
-//             console.log(error);
-//         });
-// }
-
-// function renderCalendar(dates){
-//     var listDate = document.querySelector('.test_API');
-
-//     var htmls = dates.map(function(date){
-//         return `
-//         <li>
-//             <h4>${date.date}</h4>
-//             <p>${date.shift}</p>
-//             <p>${date.status}</p>
-//         </li>`;
-//     });  
-//     var html = htmls.join('');
-//     listDate.innerHTML = html;
-// }
 

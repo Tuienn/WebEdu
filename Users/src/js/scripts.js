@@ -1,37 +1,34 @@
 // Mở giao diện thông tin cá nhân
 var header_logo_user = document.querySelector('.header_logo_user');
 var main_modal_information = document.querySelector('.main_modal_information');
-header_logo_user.addEventListener("click", function(){
-    loadContent(main_modal_information, '/Users/pages/modalInfor/modal.html', '/Users/pages/modalInfor/modal.js')  
+header_logo_user.querySelector('#subnav_li_infor').addEventListener("click", function(){
+    loadContent(main_modal_information, 'pages/modalInfor/modal.html', 'pages/modalInfor/modal.js')  
 });
 //Mở giao diện học sinh
 var container_main_func = document.querySelector('.container_main_function');
 
-var group_nav_subnav_liSelect = document.querySelectorAll('.nav_subnav_liSelect');
+var group_nav_subnav_liSelect = document.querySelectorAll('#student_parent li');
 for(let i=0; i<2; i++){
     group_nav_subnav_liSelect[i].addEventListener("click", function(){
         container_main_func.setAttribute('style', 'display: flex');
-        loadContent(container_main_func, '/Users/pages/student/student.html', '/Users/pages/student/student.js');
+        loadContent(container_main_func, 'pages/student/student.html', 'pages/student/student.js');
     });
 }
-
-// Mở giao diện thanh toán
-var nav_li_Content_pay = document.querySelector('.nav_li_content_pay');
-nav_li_Content_pay.addEventListener("click", function(){
-    loadContent(container_main_func, '/Users/pages/parent/parent.html', '/Users/pages/parent/parent.js')
+var test = document.querySelector('#student').addEventListener("click", function(){ 
+    document.querySelector('section').setAttribute('style', 'display: flex');
 })
 
-// C3: CLean code theo chatGPT
-// Khi click vào ô input thì ô đó sẽ về trạng thái bình thường(có tác dụng khi ô đó đang có hiện lỗi và sau đó nhập dữ liệu)
+// Mở giao diện thanh toán phụ huynh
+var nav_li_Content_pay = document.querySelector('#parent .nav_li_content');
+nav_li_Content_pay.addEventListener("click", function(){
+    loadContent(container_main_func, 'pages/parent/parent.html', 'pages/parent/parent.js')
+})
 
-// modal_input_text.forEach((input, index) => {
-//     input.addEventListener("input", function() {
-//         groupInput[index].querySelector('.input_text_error').innerText = '';
-//         groupInput[index].querySelector('.input_text').style.border = 'solid 1px black';
-//     });
-// });
-
-
+// Mở giao diện lịch dạy
+var nav_li_Content_calendar = document.querySelector('#teacher .nav_li_content');
+nav_li_Content_calendar.addEventListener("click", function(){
+    loadContent(container_main_func, 'pages/teacher/teacher.html', 'pages/teacher/teacher.js')
+})
 // //Fake route
 // // Get references to the navBar options and main
 
@@ -73,52 +70,5 @@ function loadScript(scriptFile) {
     document.getElementById('saveFullJS').appendChild(script);
 }
 
-//Xử lý API
-// var calendarAPI = "http://localhost:3000/calendar/HS1";
 
-// function start(){
-//     getCalendarData(renderCalendar);
-// }
-
-// start();
-
-// function getCalendarData(callback){
-//     fetch(calendarAPI)
-//         .then(function(response){
-//             return response.json();
-//         })
-//         .then(callback)
-//         .catch(function(error){
-//             console.log(error);
-//         });
-// }
-
-// function renderCalendar(dates){
-//     var listDate = document.querySelector('.test_API');
-
-//     var htmls = dates.listDate.map(function(date){
-//         return `
-//         <li>
-//             <h4>${date.date}</h4>
-//             <p>${date.shift}</p>
-//             <p>${date.status}</p>
-//         </li>`;
-//     });  
-//     var html = htmls.join('');
-//     listDate.innerHTML = html;
-// }
-
-// function renderCourses(courses){
-//     var listCourses = document.querySelector('.test_API');
-//     console.log(listCourses);
-//     var htmls = courses.map(function(course){
-//         return `
-//         <li>
-//             <h4>${course.id}</h4>
-//             <p>${course.name}</p>
-//         </li>`;
-//     });  
-//     var html = htmls.join('');
-//     listCourses.innerHTML = html;
-// }
 

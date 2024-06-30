@@ -67,6 +67,17 @@ btn_viewFee.addEventListener("click", function(){
     }
 })
 
+//Set time now
+var getFormattedDate = () => {
+    var date = new Date();
+
+    var year = date.getFullYear();
+    var month = (date.getMonth() + 1).toString().padStart(2, '0');
+    var day = date.getDate().toString().padStart(2, '0');
+  
+    return `${year}-${month}-${day}`;
+  }
+
 function checkErrorInput(input){
     var textError = input.querySelector('.input_text_error');
     var inputMoney = input.querySelector('.input_text').value;
@@ -123,33 +134,34 @@ btnPay.addEventListener("click", function(){
     }   
     else{
         for(let index=0; index<arrayStudent.length; index++){
-            console.log(arrayStudent[index]);
+            // console.log(arrayStudent[index]);
             if(arrayStudent[index].update != 0){
-                console.log(arrayStudent[index].total);
-                console.log(arrayStudent[index].paid);
+                // console.log(arrayStudent[index].total);
+                // console.log(arrayStudent[index].paid);
                 var formData ={
-                    "paid": arrayStudent[index].paid + arrayStudent[index].update
+                    "studentId": arrayStudent[index].id,
+                    "amount": arrayStudent[index].update,
+                    "date": getFormattedDate()
                 }
-                updateTution(formData, arrayStudent[index].id, function(){
-                    getStudentData(returnArrayStudent, renderStudentData_subnav);
-                });
+                postTution(formData);
             }
         }
     }
 })
 
 // Xử lý API
-var studentAPI = "http://localhost:3000/calendar";
+var studentGETAPI = "http://localhost:3000/studentGET";
+var studentPOSTAPI = "http://localhost:3000/studentPOSTPAY";
 
 var arrayStudent = [];
-function start(){
+function startParent(){
     getStudentData(returnArrayStudent, renderStudentData_subnav);
 }
 
-start();
+startParent();
 
 function getStudentData(callback1, callback2){
-    fetch(studentAPI)
+    fetch(studentGETAPI)
         .then(function(response){
             return response.json();
         })
@@ -161,6 +173,7 @@ function getStudentData(callback1, callback2){
 }
 
 function returnArrayStudent(dataJson){
+    
     var array = dataJson.map(function(data){
         return student = {
             id : data.id,
@@ -203,19 +216,18 @@ function setContentTution(total, paid){
     group_information_fee[3].querySelector('.result_tution').innerText = surplus.toLocaleString('vi', {style : 'currency', currency : 'VND'});
 }
 
-function updateTution(data, id, callback){
+function postTution(data){
     var options = {
-        method: 'PATCH',
+        method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(data)
     };
-    fetch(studentAPI+'/'+id, options)
+    fetch(studentPOSTAPI, options)
         .then(function(response){
             return response.json();
         })
-        .then(callback)
         .catch(function(error){
             console.log(error);
         });

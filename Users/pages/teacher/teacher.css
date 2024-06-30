@@ -187,32 +187,6 @@
     display: flex;
 }
 
-/* .attendance_container_form_selectDay{
-    margin-top: 30px;
-}
-
-.attendance_container_form_selectDay_groupInput{
-    display: flex;
-    width: 100%;
-}
-
-.selectDay{
-    width: 15%;
-    margin-right: 40px;
-    position: relative;
-}
-
-.selectDay i{
-    position: absolute;
-    right: 0;
-    top: 10px;
-    margin-right: 2px;
-}
-.attendance_container_form_selectDay_groupInput .btn{
-    margin-left: 20px;
-    width: 150px;
-} */
-
 .attendance_form_today{
     margin-top: 40px;
     display: flex;
